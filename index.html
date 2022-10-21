@@ -9,12 +9,13 @@
 <meta name="generator" content="Adobe RoboHelp - www.adobe.com">
 
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;width:1080px;height:2340px;}
+.tg  {border-collapse:collapse;border-spacing:0;width:1080px;height:1755px;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:75px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-titleCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:5%;}
 .tg .tg-dataCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:20%;font-size:250px;}
-.di {height:300px; width:300px; font-size:250px; text-align:center;}
+.di {height:100%; width:100%; font-size:250px; text-align:center; vertical-align:center;}
+.dd {height:100%; width:100%; font-size:250px; text-align:center; vertical-align:center;}
 </style>
 
 </head>
@@ -26,15 +27,25 @@
     <td class="tg-titleCell">TN</td>
   </tr>
   <tr>
-    <td class="tg-dataCell"><input type="text" inputmode="numeric" pattern="[0-9]*" class="di" id="dice" name="dice" value="8" min="1" max="10"></td>
-    <td class="tg-dataCell"><input type="number" class="di" id="targetNumber" name="targetNumber" value="7" min="4" max="20"></td>
+    <td class="tg-dataCell"><input type="text" inputmode="numeric" pattern="[0-9]*" class="di" id="dice" name="dice" min="1" max="10"></td>
+    <td class="tg-dataCell">
+		<select class="dd" id="targetNumber">
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7" selected="selected">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
+	</td>
   </tr>
   <tr>
     <td class="tg-titleCell">AS</td>
     <td class="tg-titleCell">Desired Result</td>
   </tr>
   <tr>
-    <td class="tg-dataCell"><input type="number" class="di" id="autoSucessess" name="autoSucessess" value="0" min="-5" max="20"></td>
+    <td class="tg-dataCell"><input type="number" class="di" id="autoSucessess" name="autoSucessess" min="-5" max="20"></td>
     <td class="tg-dataCell"><input type="number" class="di" id="desiredSucessess" name="desiredSucessess" min="1" max="20"></td>
   </tr>
   <tr>
