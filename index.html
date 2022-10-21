@@ -5,6 +5,9 @@
 
 <head>
 <meta http-equiv="content-type" content="text/html;charset=windows-1252">
+
+<script src='appiaDice.js?filever=<?=filesize('appiaDice.js')?>'></script>
+
 <title>Example of a simple HTML page</title>
 <meta name="generator" content="Adobe RoboHelp - www.adobe.com">
 
@@ -18,7 +21,7 @@
 </style>
 
 </head>
-<body>
+<body onload="populateResults()">
 <table class="tg">
 <tbody>
   <tr>
@@ -27,7 +30,7 @@
   </tr>
   <tr>
     <td class="tg-dataCell">
-		<select class="dd" id="numberOfDice">
+		<select class="dd" id="numberOfDice" onchange="populateResults()">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -40,7 +43,7 @@
 			<option value="10">10</option>
 		</select>
     <td class="tg-dataCell">
-		<select class="dd" id="targetNumber">
+		<select class="dd" id="targetNumber" onchange="populateResults()">
 			<option value="4">4</option>
 			<option value="5">5</option>
 			<option value="6">6</option>
@@ -67,7 +70,7 @@
   </tr>
   <tr>
     <td class="tg-dataCell">
-		<select class="dd" id="automaticSucessess">
+		<select class="dd" id="automaticSucessess" onchange="populateResults()">
 			<option value="-5">-5</option>
 			<option value="-4">-4</option>
 			<option value="-3">-3</option>
@@ -87,7 +90,7 @@
 		</select>
 	</td>
     <td class="tg-dataCell">
-		<select class="dd" id="desiredResult">
+		<select class="dd" id="desiredResult" onchange="populateResults()">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -115,24 +118,23 @@
     <td class="tg-titleCell" colspan="2">Average Result</td>
   </tr>
   <tr>
-    <td class="tg-titleCell" colspan="2"><label for="diceRollded">8D10 TN7 +0AS</label></td>
+    <td class="tg-titleCell" colspan="2"><label id="diceRollded">JS Broken</label></td>
   </tr>
   <tr>
-    <td class="tg-dataCell" colspan="2"><label for="averageResult">3.7</label></td>
+    <td class="tg-dataCell" colspan="2"><label id="averageResult">JS Broken</label></td>
   </tr>
   <tr>
     <td class="tg-titleCell" colspan="2">Percentage Chance</td>
   </tr>
   <tr>
-    <td class="tg-dataCell" colspan="2"><label for="percentageChance">20</label>%</td>
+    <td class="tg-dataCell" colspan="2"><label id="percentageChance">JS Broken</label>%</td>
   </tr>
 </tbody>
 </table>
 
 
 
-<!-- p id="appiaDice">Java script error, no contents generated.</p>
-<!-- script src='appiaDice.js?filever=<?=filesize('appiaDice.js')?>'></script>
+
 
 </body>
 </html>
