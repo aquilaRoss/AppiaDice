@@ -10,10 +10,11 @@
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;width:1080px;height:2340px;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:75px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-titleCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:2%;}
-.tg .tg-dataCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:23%;}
+.tg .tg-titleCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:5%;}
+.tg .tg-dataCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:20%;font-size:250px;}
+.di {height:300px; width:300px; font-size:250px; text-align:center;}
 </style>
 
 </head>
@@ -25,28 +26,28 @@
     <td class="tg-titleCell">TN</td>
   </tr>
   <tr>
-    <td class="tg-dataCell"><input type="number" style="height:200px; width:200px; font-size:120px; text-align:center;" id="quantity" name="quantity" value="3" min="1" max="10"></td>
-    <td class="tg-dataCell"><input type="number" id="quantity" name="quantity" min="1" max="5"></td>
+    <td class="tg-dataCell"><input type="text" inputmode="numeric" pattern="[0-9]*" class="di" id="dice" name="dice" value="8" min="1" max="10"></td>
+    <td class="tg-dataCell"><input type="number" class="di" id="targetNumber" name="targetNumber" value="7" min="4" max="20"></td>
   </tr>
   <tr>
     <td class="tg-titleCell">AS</td>
     <td class="tg-titleCell">Desired Result</td>
   </tr>
   <tr>
-    <td class="tg-dataCell"><input type="number" id="quantity" name="quantity" min="1" max="5"></td>
-    <td class="tg-dataCell"><input type="number" id="quantity" name="quantity" min="1" max="5"></td>
+    <td class="tg-dataCell"><input type="number" class="di" id="autoSucessess" name="autoSucessess" value="0" min="-5" max="20"></td>
+    <td class="tg-dataCell"><input type="number" class="di" id="desiredSucessess" name="desiredSucessess" min="1" max="20"></td>
   </tr>
   <tr>
     <td class="tg-titleCell" colspan="2">Average Result</td>
   </tr>
   <tr>
-    <td class="tg-dataCell" colspan="2"><label for="quantity">3.7</label></td>
+    <td class="tg-dataCell" colspan="2"><label for="averageResult">3.7</label></td>
   </tr>
   <tr>
     <td class="tg-titleCell" colspan="2">Percentage Chance</td>
   </tr>
   <tr>
-    <td class="tg-dataCell" colspan="2"><label for="quantity">20%</label></td>
+    <td class="tg-dataCell" colspan="2"><label for="percentageChance">20</label>%</td>
   </tr>
 </tbody>
 </table>
