@@ -8,13 +8,53 @@
 <title>Example of a simple HTML page</title>
 <meta name="generator" content="Adobe RoboHelp - www.adobe.com">
 
-
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;width:1080px;height:2340px;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-titleCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:2%;}
+.tg .tg-dataCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:23%;}
+</style>
 
 </head>
 <body>
-<label for="quantity">Quantity (between 1 and 5):</label>
-<input type="number" id="quantity" name="quantity" min="1" max="5">
-<p id="appiaDice">Java script error, no contents generated.</p>
-<script src='appiaDice.js?filever=<?=filesize('appiaDice.js')?>'></script>
+<table class="tg">
+<tbody>
+  <tr>
+    <td class="tg-titleCell">Dice</td>
+    <td class="tg-titleCell">TN</td>
+  </tr>
+  <tr>
+    <td class="tg-dataCell"><input type="number" style="height:200px; width:200px; font-size:120px; text-align:center;" id="quantity" name="quantity" value="3" min="1" max="10"></td>
+    <td class="tg-dataCell"><input type="number" id="quantity" name="quantity" min="1" max="5"></td>
+  </tr>
+  <tr>
+    <td class="tg-titleCell">AS</td>
+    <td class="tg-titleCell">Desired Result</td>
+  </tr>
+  <tr>
+    <td class="tg-dataCell"><input type="number" id="quantity" name="quantity" min="1" max="5"></td>
+    <td class="tg-dataCell"><input type="number" id="quantity" name="quantity" min="1" max="5"></td>
+  </tr>
+  <tr>
+    <td class="tg-titleCell" colspan="2">Average Result</td>
+  </tr>
+  <tr>
+    <td class="tg-dataCell" colspan="2"><label for="quantity">3.7</label></td>
+  </tr>
+  <tr>
+    <td class="tg-titleCell" colspan="2">Percentage Chance</td>
+  </tr>
+  <tr>
+    <td class="tg-dataCell" colspan="2"><label for="quantity">20%</label></td>
+  </tr>
+</tbody>
+</table>
+
+
+
+<!-- p id="appiaDice">Java script error, no contents generated.</p>
+<!-- script src='appiaDice.js?filever=<?=filesize('appiaDice.js')?>'></script>
+
 </body>
 </html>
