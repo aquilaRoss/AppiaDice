@@ -9,7 +9,7 @@
 <meta name="generator" content="Adobe RoboHelp - www.adobe.com">
 
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;width:1080px;height:1755px;}
+.tg  {border-collapse:collapse;border-spacing:0;width:1080px;height:1580px;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:75px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-titleCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:5%;}
@@ -27,7 +27,19 @@
     <td class="tg-titleCell">TN</td>
   </tr>
   <tr>
-    <td class="tg-dataCell"><input type="text" inputmode="numeric" pattern="[0-9]*" class="di" id="dice" name="dice" min="1" max="10"></td>
+    <td class="tg-dataCell">
+		<select class="dd" id="numberOfDice">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8" selected="selected">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
     <td class="tg-dataCell">
 		<select class="dd" id="targetNumber">
 			<option value="4">4</option>
@@ -37,6 +49,16 @@
 			<option value="8">8</option>
 			<option value="9">9</option>
 			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
 		</select>
 	</td>
   </tr>
@@ -45,8 +67,50 @@
     <td class="tg-titleCell">Desired Result</td>
   </tr>
   <tr>
-    <td class="tg-dataCell"><input type="number" class="di" id="autoSucessess" name="autoSucessess" min="-5" max="20"></td>
-    <td class="tg-dataCell"><input type="number" class="di" id="desiredSucessess" name="desiredSucessess" min="1" max="20"></td>
+    <td class="tg-dataCell">
+		<select class="dd" id="automaticSucessess">
+			<option value="-5">-5</option>
+			<option value="-4">-4</option>
+			<option value="-3">-3</option>
+			<option value="-2">-2</option>
+			<option value="-1">-1</option>
+			<option value="0" selected="selected">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
+	</td>
+    <td class="tg-dataCell">
+		<select class="dd" id="desiredResult">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+		</select>
+	</td>
   </tr>
   <tr>
     <td class="tg-titleCell" colspan="2">Average Result</td>
