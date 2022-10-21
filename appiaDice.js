@@ -50,5 +50,5 @@ function populateResults()
   
   document.getElementById("diceRollded").innerHTML = rawData.rollText;
   document.getElementById("averageResult").innerHTML = rawData.averageResult;
-  document.getElementById("percentageChance").innerHTML = "NYI";
+  document.getElementById("percentageChance").innerHTML = "v1";
 }
