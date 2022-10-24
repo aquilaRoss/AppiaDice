@@ -33,9 +33,9 @@ let defaultOptions = [
 	},
 	{
 		"description": "Physical Soak",
-		"dice": 10,
-		"tn": 8,
-		"as": 3
+		"dice": 9,
+		"tn": 7,
+		"as": 0
 	},
 	{
 		"description": "Falling Damage Soak",
