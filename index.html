@@ -16,125 +16,59 @@
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;
   overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-titleCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:4%;font-size:30px;}
-.tg .tg-dataCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:20%;font-size:250px;}
+.tg .tg-dataCell{border-color:#000000;text-align:center;vertical-align:center;width:50%;height:19%;font-size:250px;}
 .dd {height:100%; width:100%; font-size:70%; text-align:center; vertical-align:center; -webkit-appearance:none;}
 </style>
 
 </head>
-<body onload="populateResults()">
-<table class="tg">
-<tbody>
-  <tr>
-    <td class="tg-titleCell">Dice</td>
-    <td class="tg-titleCell">TN</td>
-  </tr>
-  <tr>
-    <td class="tg-dataCell">
-		<select class="dd" id="numberOfDice" onchange="populateResults()">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8" selected="selected">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-		</select>
-    <td class="tg-dataCell">
-		<select class="dd" id="targetNumber" onchange="populateResults()">
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7" selected="selected">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-			<option value="11">11</option>
-			<option value="12">12</option>
-			<option value="13">13</option>
-			<option value="14">14</option>
-			<option value="15">15</option>
-			<option value="16">16</option>
-			<option value="17">17</option>
-			<option value="18">18</option>
-			<option value="19">19</option>
-			<option value="20">20</option>
-		</select>
-	</td>
-  </tr>
-  <tr>
-    <td class="tg-titleCell">AS</td>
-    <td class="tg-titleCell">Desired Result</td>
-  </tr>
-  <tr>
-    <td class="tg-dataCell">
-		<select class="dd" id="automaticSucessess" onchange="populateResults()">
-			<option value="-5">-5</option>
-			<option value="-4">-4</option>
-			<option value="-3">-3</option>
-			<option value="-2">-2</option>
-			<option value="-1">-1</option>
-			<option value="0" selected="selected">0</option>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-		</select>
-	</td>
-    <td class="tg-dataCell">
-		<select class="dd" id="desiredResult" onchange="populateResults()">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-			<option value="11">11</option>
-			<option value="12">12</option>
-			<option value="13">13</option>
-			<option value="14">14</option>
-			<option value="15">15</option>
-			<option value="16">16</option>
-			<option value="17">17</option>
-			<option value="18">18</option>
-			<option value="19">19</option>
-			<option value="20">20</option>
-		</select>
-	</td>
-  </tr>
-  <tr>
-    <td class="tg-titleCell" colspan="2">Average Result</td>
-  </tr>
-  <tr>
-    <td class="tg-titleCell" colspan="2"><label id="diceRollded">JS Broken</label></td>
-  </tr>
-  <tr>
-    <td class="tg-dataCell" colspan="2"><label id="averageResult">JS Broken</label></td>
-  </tr>
-  <tr>
-    <td class="tg-titleCell" colspan="2">Percentage Chance</td>
-  </tr>
-  <tr>
-    <td class="tg-dataCell" colspan="2"><label id="percentageChance">JS Broken</label>%</td>
-  </tr>
-</tbody>
-</table>
 
-
-
-
-
+<body onload="bodyLoad()">
+	<table class="tg">
+		<tbody>
+		  <tr>
+			<td class="tg-titleCell" colspan="2">
+				<select class="dd" id="defaultSelectID" onchange="applyDefaults()"></select>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="tg-titleCell">Dice</td>
+			<td class="tg-titleCell">TN</td>
+		  </tr>
+		  <tr>
+			<td class="tg-dataCell">
+				<select class="dd" id="numberOfDice" onchange="populateResults()"></select>
+			<td class="tg-dataCell">
+				<select class="dd" id="targetNumber" onchange="populateResults()"></select>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="tg-titleCell">AS</td>
+			<td class="tg-titleCell">Desired Result</td>
+		  </tr>
+		  <tr>
+			<td class="tg-dataCell">
+				<select class="dd" id="automaticSucessess" onchange="populateResults()"></select>
+			</td>
+			<td class="tg-dataCell">
+				<select class="dd" id="desiredResult" onchange="populateResults()"></select>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="tg-titleCell" colspan="2">Average Result</td>
+		  </tr>
+		  <tr>
+			<td class="tg-titleCell" colspan="2"><label id="diceRollded">JS Broken</label></td>
+		  </tr>
+		  <tr>
+			<td class="tg-dataCell" colspan="2"><label id="averageResult">JS Broken</label></td>
+		  </tr>
+		  <tr>
+			<td class="tg-titleCell" colspan="2">Percentage Chance</td>
+		  </tr>
+		  <tr>
+			<td class="tg-dataCell" colspan="2"><label id="percentageChance">JS Broken</label>%</td>
+		  </tr>
+		</tbody>
+	</table>
 </body>
 </html>
