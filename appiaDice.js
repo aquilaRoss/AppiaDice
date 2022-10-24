@@ -1,5 +1,12 @@
 // JavaScript Document
 
+// Probably should NOT be using this. It is orders of magnitude slower.
+// A single Iteration of the brute force (with size 10k), when measured with the built in javascript stuff
+// on my home PC was of the order 11-14 which is comparable to 2500 iterations of the statistical output
+// The problem with the statistical is that its wrong as it does not account for the exploding nature of the wild die.
+let useBruteForce = true;
+let sizeOfBruteForce = 10000;
+
 let numberOfDiceOptions = { "minimum":1, "maximum":10, "default":8 };
 let targetNumberOptions = { "minimum":4, "maximum":20, "default":7  };
 let autoSuccessesOptions = { "minimum":-5, "maximum":15, "default":0  };
@@ -169,7 +176,7 @@ function getData()
   this.averageResultRaw = this.averageResultJustDice + this.as;
   //console.log("Adding the AS makes it " + this.averageResultRaw);
   
-  this.averageResult = Number(this.averageResultRaw.toFixed(2));
+  this.averageResult = Number(this.averageResultRaw.toFixed(1));
   //console.log("Rounding makes it " + this.averageResult);
   
   this.rollText = this.dice + "D10 TN" + this.tn + " ";
@@ -186,17 +193,42 @@ function getData()
   this.percentageChanceOfAtLeastN_scaled = this.percentageChanceOfAtLeastN_raw * 100;
   //console.log("which is " +  this.percentageChanceOfAtLeastN_scaled + " After being scaled from 0-1 to 0-100.");
   
-  this.percentageChanceOfAtLeastN = Number(this.percentageChanceOfAtLeastN_scaled.toFixed(2));
+  this.percentageChanceOfAtLeastN = Number(this.percentageChanceOfAtLeastN_scaled.toFixed(1));
   //console.log("and cleaned up is " +  this.percentageChanceOfAtLeastN);
+}
+
+function getBruteForceData()
+{
+  this.dice = parseInt(document.getElementById("numberOfDice").value, 10);
+  this.tn = parseInt(document.getElementById("targetNumber").value, 10);
+  this.as = parseInt(document.getElementById("automaticSucessess").value, 10);
+  this.desired = parseInt(document.getElementById("desiredResult").value, 10);
+  
+  this.rollText = this.dice + "D10 TN" + this.tn + " ";
+  if (this.as < 0) { this.rollText += " " + this.as + "AS"; }
+  else if (this.as > 0) { this.rollText += " +" + this.as + "AS";}
+  
+  this.averageResultJustDice = averageRoll(this.dice, this.tn);  
+  this.averageResultRaw = this.averageResultJustDice + this.as;
+  this.averageResult = Number(this.averageResultRaw.toFixed(1));
+  
+  this.neededFromDice = this.desired - this.as;
+  this.percentageChanceOfAtLeastN_scaled = bruteForcePercentageThatSucceeded(this.dice, this.tn, this.neededFromDice);
+  this.percentageChanceOfAtLeastN = Number(this.percentageChanceOfAtLeastN_scaled.toFixed(1));
 }
 
 function populateResults()
 {
-  var rawData = new getData();
-  
-  document.getElementById("diceRollded").innerHTML = rawData.rollText;
-  document.getElementById("averageResult").innerHTML = rawData.averageResult;
-  document.getElementById("percentageChance").innerHTML = rawData.percentageChanceOfAtLeastN;
+    var rawData = new getData();
+    
+    if (useBruteForce)
+    {
+      rawData = new getBruteForceData();
+    }
+    
+    document.getElementById("diceRollded").innerHTML = rawData.rollText;
+    document.getElementById("averageResult").innerHTML = rawData.averageResult;
+    document.getElementById("percentageChance").innerHTML = rawData.percentageChanceOfAtLeastN;
 }
 
 function setupDefaultSelections()
@@ -265,4 +297,208 @@ function bodyLoad()
 	setupDefaultSelections();
 	
 	populateResults();
+  
+  currentTestFunction();
 }
+
+function randomIntFromInterval(min, max)
+{
+  var returnValue = 1;
+  returnValue = Math.floor(Math.random()*(max-min+1)+min);
+  //console.log("Random Number in Range " + min + " to " + max + " of " + returnValue);
+  return returnValue;
+}
+
+function rollBasicDie()
+{
+  var dieResult = randomIntFromInterval(1, 10);
+  //console.log("dieResult: " + dieResult);
+  
+  var returnValue = dieResult;
+  //console.log("returnValue: " + returnValue);
+  
+  while (dieResult == 10)
+  {
+    dieResult = randomIntFromInterval(1, 10);
+    returnValue += dieResult;
+    //console.log("within While");
+    //console.log("returnValue: " + returnValue);
+    //console.log("dieResult: " + dieResult);
+  }
+  
+  //console.log("final returnValue: " + returnValue);
+  return returnValue;
+}
+
+function rollWildDieVsTN(targetNumber)
+{
+  var wildDieTargetNumber = targetNumber;
+  
+  if (wildDieTargetNumber > 10) { wildDieTargetNumber = 10; }
+  
+  var dieResult = randomIntFromInterval(1, 10);
+  
+  var numberOfSuccesses = 0;
+  
+  if (dieResult >= targetNumber && dieResult < 10)
+  {
+    numberOfSuccesses++;
+  }
+  else if (dieResult == 10)
+  {
+    numberOfSuccesses++;
+    //console.log("Critical! - 1/10");
+    dieResult = randomIntFromInterval(1, 10);
+    
+    if (dieResult >= targetNumber && dieResult < 10)
+    {
+      numberOfSuccesses++;
+    }
+    else if (dieResult == 10)
+    {
+      numberOfSuccesses++;
+      //console.log("Critical! - 1/100");
+      dieResult = randomIntFromInterval(1, 10);
+      
+      if (dieResult >= targetNumber && dieResult < 10)
+      {
+        numberOfSuccesses++;
+      }
+      else if (dieResult == 10)
+      {
+        numberOfSuccesses++;
+        //console.log("Critical! - 1/1,000");
+        dieResult = randomIntFromInterval(1, 10);
+        
+        if (dieResult >= targetNumber && dieResult < 10)
+        {
+          numberOfSuccesses++;
+        }
+        else if (dieResult == 10)
+        {
+          numberOfSuccesses++;
+          //console.log("Critical! - 1/10,000");
+          dieResult = randomIntFromInterval(1, 10);
+          
+          if (dieResult >= targetNumber && dieResult < 10)
+          {
+            numberOfSuccesses++;
+          }
+          else if (dieResult == 10)
+          {
+            numberOfSuccesses++;
+            //console.log("Critical! - 1/100,000");
+            dieResult = randomIntFromInterval(1, 10);
+            
+            if (dieResult >= targetNumber && dieResult < 10)
+            {
+              numberOfSuccesses++;
+            }
+            else if (dieResult == 10)
+            {
+              numberOfSuccesses++;
+              //console.log("Last Possible Critical! - 1/1,000,000");
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  return numberOfSuccesses;
+}
+
+function rollDieVsTN(targetNumber)
+{
+  var dieResult = rollBasicDie();
+  
+  if (dieResult >= targetNumber)
+  {
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
+}
+
+function rollDice(numberOfDice, targetNumber)
+{
+  var wildDieResult = rollWildDieVsTN(targetNumber);
+  
+  var normalDiceResult = 0;
+  if (numberOfDice > 1)
+  {
+    while (numberOfDice)
+    {
+      numberOfDice--;
+      normalDiceResult += rollDieVsTN(targetNumber);
+    }
+  }
+  
+  return wildDieResult + normalDiceResult;
+}
+
+function averageRoll(numberOfDice, targetNumber)
+{
+  var totalResult = 0;
+  
+  for ( var currentDie = 0; currentDie < sizeOfBruteForce; currentDie++)
+  {
+    totalResult += rollDice(numberOfDice, targetNumber);
+  }
+  
+  averageResult_raw = totalResult / sizeOfBruteForce;
+  
+  averageResult = Number(averageResult_raw.toFixed(1));
+  
+  return averageResult;
+}
+
+function bruteForcePercentageThatSucceeded(numberOfDice, targetNumber, atLeastSuccesses)
+{
+  var ammountThatSucceeded = 0;
+  
+  for ( var currentDie = 0; currentDie < sizeOfBruteForce; currentDie++)
+  {
+    if (rollDice(numberOfDice, targetNumber) >= atLeastSuccesses)
+    {
+      ammountThatSucceeded++;
+    }
+  }
+  
+  return (ammountThatSucceeded / sizeOfBruteForce) * 100;
+}
+
+function currentTestFunction()
+{
+
+}
+
+function performanceTest()
+{
+  performance.mark("Start");
+
+  for ( var currentDie = 0; currentDie < 1; currentDie++)
+  {
+    //var rawData = new getData();
+    //var rawData = new getBruteForceData();
+  }
+  
+  performance.mark("End");
+  
+  performance.measure("Start to End", "Start", "End");
+  console.log(performance.getEntriesByType("measure"));
+}
+
+
+
+
+
+
+
+
+
+
+
+
