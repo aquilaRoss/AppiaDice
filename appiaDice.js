@@ -32,6 +32,12 @@ let defaultOptions = [
 		"as": 3
 	},
 	{
+		"description": "Parry",
+		"dice": 9,
+		"tn": 6,
+		"as": 2
+	},
+	{
 		"description": "Physical Soak",
 		"dice": 9,
 		"tn": 7,
@@ -56,9 +62,69 @@ let defaultOptions = [
 		"as": 0
 	},
 	{
-		"description": "Willpower",
-		"dice": 8,
+		"description": "Willpower (Fear)",
+		"dice": 10,
 		"tn": 6,
+		"as": 1
+	},
+	{
+		"description": "Willpower (Resist)",
+		"dice": 10,
+		"tn": 7,
+		"as": 0
+	},
+	{
+		"description": "Haste",
+		"dice": 10,
+		"tn": 7,
+		"as": 1
+	},
+	{
+		"description": "Haste Push Through",
+		"dice": 10,
+		"tn": 7,
+		"as": 0
+	},
+	{
+		"description": "Move(5) + Leap",
+		"dice": 10,
+		"tn": 6,
+		"as": 8
+	},
+	{
+		"description": "Throw (Atk)",
+		"dice": 10,
+		"tn": 6,
+		"as": 4
+	},
+	{
+		"description": "Throw (Dmg)",
+		"dice": 10,
+		"tn": 7,
+		"as": 2
+	},
+	{
+		"description": "Telepathic Shock (Atk)",
+		"dice": 10,
+		"tn": 7,
+		"as": 3
+	},
+	{
+		"description": "Telepathic Shock (Dmg)",
+		"dice": 10,
+		"tn": 8,
+		"as": 1
+	},
+	{
+		"description": "Telepathic Trickery (Atk)",
+		"dice": 10,
+		"tn": 7,
+		"as": 3
+	},
+	{
+		"description": "Telepathic Trickery (Dmg)",
+		"dice": 10,
+		"tn": 7,
 		"as": 1
 	}
 ]
